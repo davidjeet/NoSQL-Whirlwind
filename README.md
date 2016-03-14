@@ -1,0 +1,1 @@
+## This repo covers the material used for the NoSQL Whirlwind talk
