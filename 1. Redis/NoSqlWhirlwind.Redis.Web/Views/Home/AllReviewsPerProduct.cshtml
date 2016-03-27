@@ -1,0 +1,32 @@
+﻿@model IEnumerable<NoSqlWhirlwind.Redis.Web.Models.Review>
+
+<p>&nbsp;</p>
+
+<h2>Reviews for @ViewBag.ProductName</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewText)
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>

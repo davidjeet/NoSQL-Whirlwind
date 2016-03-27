@@ -1,0 +1,51 @@
+﻿@model IEnumerable<NoSqlWhirlwind.Redis.Web.Models.Product>
+@using NoSqlWhirlwind.Redis.Web.Models;
+@{
+    var Reviews = ViewBag.RecentReviews as IEnumerable<Review>;
+
+}
+
+<p>&nbsp;</p>
+<div class="col-md-10 content">
+    <br />
+
+    <table class="table">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.ProductImageUrl)" alt="@item.Name" />
+                </td>
+                <td>
+                    <h4 style="color:darkblue">
+                        @Html.ActionLink(@item.Name, "AllReviewsPerProduct", new { id = item.Id })
+                    </h4>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <span>$</span>@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Add Review", "AddReview", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="col-md-2" style="background-color: #e5e5e5">
+    <h4 style="text-align:center;color:chocolate;">Recent Comments</h4>
+    @foreach (Review review in Reviews)
+    {
+        var color = (review.Rating > 5) ?  "blue" : "red";
+        <span style="margin-left: 10px;">
+            <strong style="color:@color">@review.Rating</strong>
+            <span>/10</span>
+            <br /><em style="text-align:right !important; font-size:0.75em !important;">@review.ReviewText</em>
+        </span>
+        <hr style="border-top: 2px dotted black; width:85%" />   
+    }
+</div>
+
