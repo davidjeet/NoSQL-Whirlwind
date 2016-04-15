@@ -171,6 +171,8 @@ public static class StockSample
                 }
             }
         }
+
+        Console.ReadKey();
     }
 
     /// <summary>
@@ -653,5 +655,6 @@ public static class StockSample
 
             transaction.Commit(CommitTransactionGrbit.LazyFlush);
         }
+
     }
 }
